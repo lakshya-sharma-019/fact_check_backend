@@ -23,9 +23,9 @@ class Submission(BaseModel):
     user_id: str
     input_text: str
 
-@app.post("/")
+@app.get("/")
 def read_root():
-    return {"message": "Hello, world!"}
+    return JSONResponse(content={"message": "Welcome to the API!"})
     
 @app.post("/submit/now/all/")
 def get_grounded_fact_check(submission:Submission):
