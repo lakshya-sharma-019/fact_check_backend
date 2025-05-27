@@ -1,0 +1,6 @@
+uvicorn 
+pydantic
+fastapi
+google-cloud-aiplatform
+google-auth
+google-generativeai>=0.4.0
