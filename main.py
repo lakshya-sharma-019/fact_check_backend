@@ -23,6 +23,10 @@ class Submission(BaseModel):
     user_id: str
     input_text: str
 
+@app.get("/")
+def read_root():
+    return {"message": "Hello, world!"}
+    
 @app.post("/submit/now/all/")
 def get_grounded_fact_check(submission:Submission):
     response_json= get_fact_check_vertex(submission.input_text)
