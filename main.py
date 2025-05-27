@@ -25,7 +25,7 @@ class Submission(BaseModel):
 
 @app.get("/")
 def read_root():
-    return JSONResponse(content={"message": "Welcome to the API!"})
+    return {"message": "Welcome to the API!"}
     
 @app.post("/submit/now/all/")
 def get_grounded_fact_check(submission:Submission):
