@@ -23,7 +23,7 @@ class Submission(BaseModel):
     user_id: str
     input_text: str
 
-@app.get("/")
+@app.post("/")
 def read_root():
     return {"message": "Hello, world!"}
     
