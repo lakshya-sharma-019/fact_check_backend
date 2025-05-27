@@ -116,18 +116,14 @@ Here's the process you must follow:
 {text}
 """
   try:
-
+    credentials_ = service_account.Credentials.from_service_account_file(
+        '/etc/secrets/creds.json'
+        ,scopes=["https://www.googleapis.com/auth/cloud-platform"]
+    )
     
-    credentials_json = os.getenv("GOOGLE_CREDENTIALS_JSON")
-    if credentials_json:
-        credentials_info = json.loads(credentials_json)
-        credentials = service_account.Credentials.from_service_account_info(credentials_info, scopes=["https://www.googleapis.com/auth/cloud-platform"])
-    else:
-        raise Exception("Missing GOOGLE_CREDENTIALS_JSON environment variable")
-
-    
-    client = genai.Client(vertexai=True, project=PROJECT_ID, location=LOCATION, credentials=credentials)
+    client = genai.Client(vertexai=True, project=PROJECT_ID, location=LOCATION, credentials=credentials_)
     google_search_tool = Tool(google_search=GoogleSearch())
+
 
     response = client.models.generate_content(
         model=MODEL_ID,
