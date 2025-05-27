@@ -13,7 +13,7 @@ import uvicorn
 # Enable CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['http://127.0.0.1:5500', '*'],
+    allow_origins=['*'],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -38,4 +38,4 @@ def get_grounded_fact_check(submission:Submission):
     return report  
 
 if __name__ == "__main__":
-    uvicorn.run(app, port=10000)
+    uvicorn.run(app)
